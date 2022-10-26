@@ -22,12 +22,15 @@ exports.signup = (req, res, next) => {
         .catch(error => res.status(500).json({ error }));
 };
 
-exports.login = (req, res, next) => {
+//  Vérifier que l'e-mail entré par l'utilisateur correspond à un utilisateur existant de la base de données
+exports.login = (req, res, next) => { 
+    //  Objet filtre : l'utilisateur pour qui l'adresse mail correspond à ladresse mail envoyée dans la requête 
     User.findOne({ email: req.body.email })
         .then(user => {
             if (user === null) {
                 return res.status(401).json({ message: 'Utilisateur non trouvé !' });
             }
+            //comparaison du mot de passe entré par l'user avec le hash enregistré dans la base de données
             bcrypt.compare(req.body.password, user.password) 
                 .then(valid => {
                     if (!valid) {
