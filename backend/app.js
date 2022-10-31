@@ -4,14 +4,14 @@ const mongoose = require('mongoose');  //  Connexion à Mongoose/Mongo DB*/
 const dotenv = require('dotenv');  // Mise en place des variables environnement grâce à dotenv
 dotenv.config();
 
+//  Connexion aux différentes routes
 const userRoutes = require('./routes/auth');
+const sauceRoutes = require('./routes/sauce');
 
-
-const path = require('path');
+const path = require('path'); //  Donne acccès au chemin du systeme de fichier
 
 
 //  Connection de l'API au cluster mongoDB
-
 mongoose.connect('mongodb://localhost:27017', {useNewUrlParser: true, useUnifiedTopology: true })
 .then(() => console.log('Connexion à MongoDB réussie !'))
 .catch(error => {console.log("==> error", error)})
@@ -32,6 +32,8 @@ app.use((req, res, next) => {
 });
 
 
-app.use('/api/auth', userRoutes);
+app.use('/api/sauces', sauceRoutes);  //  Enregistrement du routeur pour toutes les demandes effectuées vers /api/sauces
+app.use('/api/auth', userRoutes);  //  La racine de toutes les routes liées à l'authentification
+app.use('/images', express.static(path.join(__dirname, 'images')));  //  Sert le dossier statique image
 
 module.exports = app; //Permet l'accès depuis les autres fichiers, notamment le serveur Node 
