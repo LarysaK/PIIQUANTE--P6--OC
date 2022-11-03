@@ -1,6 +1,6 @@
 //  Déportation de la logique routing sur le Router
 const express = require('express');
-const auth = require('../middleware/authorize-multer');
+const auth = require('../middleware/authorize');
 const router = express.Router();  // Implémenter des routes
 const multer = require('../middleware/configuration-multer');
 const sauceCtrl = require('../controllers/sauce');

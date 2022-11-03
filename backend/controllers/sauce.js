@@ -3,6 +3,7 @@ const fs = require('fs');
 
 //  Route creation
 exports.createSauce = (req, res, next) => {
+    console.log("===> body", req.body);
     const sauceObject = JSON.parse(req.body.sauce);
     delete sauceObject._id;
     delete sauceObject._userId;
