@@ -22,4 +22,5 @@ cd backend / npm install
 Pour démarrer les serveurs, veuillez exécuter ces commandes :
 
 Via le terminal sur le frontend : npm start
+
 Via le terminal sur le backend : node server
