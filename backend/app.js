@@ -12,7 +12,8 @@ const path = require('path'); //  Donne acccès au chemin du systeme de fichier
 
 
 //  Connection de l'API au cluster mongoDB
-mongoose.connect('mongodb://localhost:27017/test', {useNewUrlParser: true, useUnifiedTopology: true })
+const uri = "mongodb+srv://Larysa_Karahieorhii:ndPR0qR9NBDQ8VRi@cluster0.mgkdjxp.mongodb.net/?retryWrites=true&w=majority";
+mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true })
 .then(() => console.log('Connexion à MongoDB réussie !'))
 .catch(error => {console.log("==> error", error)})
 
